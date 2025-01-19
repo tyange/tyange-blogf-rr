@@ -1,17 +1,24 @@
+import { Outlet } from "react-router";
+import { getMdList } from "~/data/data";
 import type { Route } from "./+types/blog";
 
-import parse from "html-react-parser";
-
-import { getMd } from "~/data/data";
-
 export async function loader() {
-  return await getMd();
+  return await getMdList();
 }
 
-export default function Blog({loaderData}: Route.ComponentProps) {
+export default function Blog({ loaderData }: Route.ComponentProps) {
+  console.log(loaderData);
+
   return (
     <main>
-      {parse(loaderData)}
+      <ul>
+        {loaderData.map((title) => (
+          <li key={title}>{title}</li>
+        ))}
+      </ul>
+      <div>
+        <Outlet />
+      </div>
     </main>
   );
 }
