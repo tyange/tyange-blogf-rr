@@ -6,4 +6,4 @@ title: "테스트 1"
 
 ## test 1
 
-![forest](../../../assets/images/forest.jpg)
+![forest](../../assets/content-images/forest.jpg)

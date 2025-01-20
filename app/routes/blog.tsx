@@ -1,14 +1,12 @@
 import { Outlet } from "react-router";
-import { getMdList } from "~/data/data";
+import { getContentList } from "~/content/content";
 import type { Route } from "./+types/blog";
 
 export async function loader() {
-  return await getMdList();
+  return await getContentList();
 }
 
 export default function Blog({ loaderData }: Route.ComponentProps) {
-  console.log(loaderData);
-
   return (
     <main>
       <ul>

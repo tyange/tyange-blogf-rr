@@ -11,4 +11,20 @@ export default defineConfig({
     },
   },
   plugins: [reactRouter(), tsconfigPaths()],
+  build: {
+    rollupOptions: {
+      output: {
+        assetFileNames(chunkInfo) {
+          if (
+            chunkInfo.originalFileNames &&
+            chunkInfo.originalFileNames[0].includes("content-images")
+          ) {
+            return "assets/[name][extname]";
+          }
+
+          return "assets/[name]-[hash][extname]";
+        },
+      },
+    },
+  },
 });

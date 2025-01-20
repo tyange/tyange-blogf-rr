@@ -1,5 +1,10 @@
 import type { Config } from "@react-router/dev/config";
 
+import { getMdList } from "./app/content/content";
+
 export default {
-  prerender: true,
+  async prerender() {
+    let list = await getMdList();
+    return ["/", "/blog"].concat(list.map((md) => `/blog/${md}`));
+  },
 } satisfies Config;
